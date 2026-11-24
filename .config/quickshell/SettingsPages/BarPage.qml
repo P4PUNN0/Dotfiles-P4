@@ -29,7 +29,7 @@ Item {
         clock24: true, clockSeconds: false, clockPadHour: true, clockAmPm: true, clockDate: true, clockDay: false, clockDot: true, clockDayOnly: false, clockCase: "normal", dateOrder: "md", weekMonday: true,
         weatherIcon: false, weatherF: false, weatherCity: "", weatherCase: "upper", weatherSymbol: false, weatherNumber: true,
         mediaMaxW: 110, mediaScroll: true,
-        stripCorner: "square", stripRadius: 12, stripFlare: 10, stripDivide: "none",
+        stripCorner: "square", stripRadius: 12, stripFlare: 10, stripDivide: "none", stripPad: 16, stripFrame: false, frameRadius: 16, borderWidth: 1,
         iconHX: 0, iconHY: 0, textHX: 0, textHY: 0, iconVX: 0, iconVY: 0, textVX: 0, textVY: 0,
         clockPrimary: "calendar", clockSecondary: "settings", clockTertiary: "barsettings",
         settingsPrimary: "settings", settingsSecondary: "barsettings", settingsTertiary: "none",
@@ -559,14 +559,14 @@ Item {
                         BarSlider {
                             label: "H-BAR END INSET"
                             enabled: !page.vertical
-                            from: 0; to: 600; step: 1; unit: " px"
+                            from: -20; to: 600; step: 1; unit: " px"
                             value: page.val("insetH")
                             onMoved: v => page.set("insetH", v)
                         }
                         BarSlider {
                             label: "V-BAR END INSET"
                             enabled: page.vertical
-                            from: 0; to: 600; step: 1; unit: " px"
+                            from: -20; to: 600; step: 1; unit: " px"
                             value: page.val("insetV")
                             onMoved: v => page.set("insetV", v)
                         }
@@ -585,11 +585,32 @@ Item {
                             onMoved: v => page.set("stripFlare", v)
                         }
                         BarSlider {
+                            label: "SECTION PADDING"
+                            visible: page.strip
+                            from: 0; to: 60; step: 1; unit: " px"
+                            value: page.val("stripPad")
+                            onMoved: v => page.set("stripPad", v)
+                        }
+                        BarSlider {
+                            label: "FRAME CORNER RADIUS"
+                            visible: page.strip && page.val("stripFrame")
+                            from: 0; to: 20; step: 1; unit: " px"
+                            value: page.val("frameRadius")
+                            onMoved: v => page.set("frameRadius", v)
+                        }
+                        BarSlider {
                             label: "BORDER OPACITY"
                             enabled: page.val("border")
                             from: 0; to: 1; step: 0.05; unit: "%"; displayScale: 100
                             value: page.val("borderOpacity")
                             onMoved: v => page.set("borderOpacity", v)
+                        }
+                        BarSlider {
+                            label: "BORDER WIDTH"
+                            enabled: page.val("border")
+                            from: 0.5; to: 4; step: 0.5; unit: " px"; decimals: 1
+                            value: page.val("borderWidth")
+                            onMoved: v => page.set("borderWidth", v)
                         }
                     }
 
@@ -612,6 +633,11 @@ Item {
                         ToggleRow {
                             label: "DRAG MODULES"; checked: page.val("dragModules")
                             onToggled: v => page.set("dragModules", v)
+                        }
+                        ToggleRow {
+                            label: "SCREEN FRAME"; checked: page.val("stripFrame")
+                            enabled: page.strip && page.val("stripDivide") === "sections"
+                            onToggled: v => page.set("stripFrame", v)
                         }
                     }
                 }
