@@ -39,19 +39,21 @@ A continuación se detallan los ajustes personales realizados sobre el proyecto 
 1. **Atajo rápido para VS Code**:
    - `Super + C` ahora abre directamente **Visual Studio Code** (`code`).
    - Se registró en las opciones de configuración de Quickshell (`KeybindsPage.qml`).
-2. **Atajo de Panel Lateral**:
+2. **Atajo de Ajustes del Sistema**:
+   - Cambiado a `Super + S` para abrir rápidamente el menú de ajustes del sistema (**Settings**).
+3. **Atajo de Panel Lateral**:
    - Cambiado a `Super + N` para abrir el panel lateral / notificaciones.
-3. **Distribución de teclado**:
+4. **Distribución de teclado**:
    - Cambiado a español latinoamericano (`kb_layout = "latam"`) en `.config/hypr/hyprland.lua`.
-4. **Opacidad de ventanas**:
+5. **Opacidad de ventanas**:
    - Ajustada por defecto a `0.9` en `.config/hypr/rules.lua` para dar un efecto translúcido equilibrado en todas las ventanas activas.
-5. **Optimización de Fondos Animados (`live-wallpaper-pause.sh`)**:
+6. **Optimización de Fondos Animados (`live-wallpaper-pause.sh`)**:
    - Script mejorado para verificar si hay ventanas abiertas en el workspace actual y pausar automáticamente `mpvpaper` vía señal `SIGSTOP`/`SIGCONT` para ahorrar uso de CPU/GPU y batería.
-6. **Fastfetch Personalizado**:
+7. **Fastfetch Personalizado**:
    - Añadido logo personalizado en arte ASCII (`ascii.txt`) y módulo de información reorganizado con colores en círculos.
-7. **Terminal Kitty**:
+8. **Terminal Kitty**:
    - Se añadió padding interno cómodo (`window_padding_width 15`) para separar el texto de los bordes.
-8. **Wallpapers incorporados**:
+9. **Wallpapers incorporados**:
    - Colección de fondos estáticos (`1.jpg` a `11.jpg`, `wallhaven-k8jvm7.jpg`) incluida directamente en la carpeta `wallpapers/`.
    - Soporte automático en `install.sh` tanto para rutas en español (`~/Imágenes/Wallpapers`) como en inglés (`~/Pictures/Wallpapers`).
 
@@ -61,7 +63,7 @@ A continuación se detallan los ajustes personales realizados sobre el proyecto 
 
 > [!TIP]
 > La tecla **Super** corresponde a la tecla `Windows` de tu teclado.  
-> Los atajos también se pueden consultar y cambiar desde la interfaz gráfica de **Quickshell** (`Super + I` → **Keybinds**).
+> Los atajos también se pueden consultar y cambiar desde la interfaz gráfica de **Quickshell** (`Super + S` → **Keybinds**).
 
 ### 🚀 Aplicaciones y Herramientas
 
@@ -69,12 +71,12 @@ A continuación se detallan los ajustes personales realizados sobre el proyecto 
 |---|---|---|
 | `Super + T` | Abrir terminal (**Kitty**) | Base 43PR |
 | `Super + C` | Abrir editor de código (**Visual Studio Code**) | ✨ *Añadido por P4PUNN0* |
+| `Super + S` | Abrir menú de ajustes de Quickshell (**Settings**) | ✨ *Ajustado por P4PUNN0* |
+| `Super + N` | Abrir barra lateral / Centro de acciones (**Sidepanel**) | ✨ *Ajustado por P4PUNN0* |
 | `Super + B` | Abrir navegador web (Brave u otro seleccionado) | Base 43PR |
 | `Super + E` | Abrir gestor de archivos (**Thunar**) | Base 43PR |
 | `Super + D` | Lanzador de aplicaciones (**Rofi**) | Base 43PR |
 | `Super + W` | Selector interactivo de fondos de pantalla | Base 43PR |
-| `Super + N` | Abrir barra lateral / Centro de acciones | ✨ *Ajustado por P4PUNN0* |
-| `Super + I` | Abrir menú de ajustes de Quickshell | Base 43PR |
 | `Super + V` | Historial del portapapeles (**Cliphist**) | Base 43PR |
 | `Super + Grave` (`` ` `` o `~`) | Menú de apagado y cierre de sesión (Powermenu) | Base 43PR |
 | `Super + Tab` | Bloquear la pantalla (**Hyprlock**) | Base 43PR |
