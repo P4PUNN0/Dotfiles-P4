@@ -2,7 +2,7 @@
 
 # 🌌 Dotfiles de P4PUNN0 (Dorfiles-P4)
 
-<img width="2171" height="724" alt="Dorfiles P4 Banner" src="assets/banner.png" />
+<img width="100%" alt="P4 dotfiles Banner" src="assets/banner.png" />
 
 <p align="center">
   <img src="https://img.shields.io/badge/HYPRLAND-0.57-667A82?style=flat&labelColor=101418" height="20" alt="Hyprland">
