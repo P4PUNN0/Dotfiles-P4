@@ -146,6 +146,8 @@ bind(mainMod .. " + " .. terminal_key,      hl.dsp.exec_cmd(terminal))
 if launcher_key == "SUPER" or launcher_key == "SUPER_L" then
     bind("SUPER + SUPER_L", hl.dsp.exec_cmd("pgrep -x rofi >/dev/null && pkill -x rofi || " .. menu), { release = true })
     bind("SUPER + SUPER_R", hl.dsp.exec_cmd("pgrep -x rofi >/dev/null && pkill -x rofi || " .. menu), { release = true })
+    bind("SUPER_L",         hl.dsp.exec_cmd("pgrep -x rofi >/dev/null && pkill -x rofi || " .. menu), { release = true })
+    bind("SUPER_R",         hl.dsp.exec_cmd("pgrep -x rofi >/dev/null && pkill -x rofi || " .. menu), { release = true })
 else
     bind(mainMod .. " + " .. launcher_key,  hl.dsp.exec_cmd("pgrep -x rofi >/dev/null && pkill -x rofi || " .. menu))
 end

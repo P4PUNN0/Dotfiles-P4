@@ -77,6 +77,12 @@ if io.open(f, "r") then dofile(f) end
 
 ---- SPLIT-OUT FILES ----
 
+package.loaded["monitors"] = nil
+package.loaded["keybinds"] = nil
+package.loaded["look"] = nil
+package.loaded["rules"] = nil
+package.loaded["hyprland-gui"] = nil
+
 require("monitors")
 require("keybinds")
 require("look")
