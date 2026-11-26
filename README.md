@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🌌 Dotfiles de P4PUNN0 (Dorfiles-P4)
+# 🌌 Dotfiles de P4PUNN0 (Dotfiles-P4)
 
 <img width="100%" alt="P4 dotfiles Banner" src="assets/banner.png" />
 
@@ -144,7 +144,7 @@ El repositorio incluye una carpeta `wallpapers/` con fondos listos para usar:
 
 2. **Clonar este repositorio**:
    ```bash
-   git clone https://github.com/P4PUNN0/Dorfiles-P4.git ~/dotfiles
+   git clone https://github.com/P4PUNN0/Dotfiles-P4.git ~/dotfiles
    ```
 
 3. **Ejecutar el script de instalación**:
