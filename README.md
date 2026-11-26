@@ -59,7 +59,9 @@ A continuación se detallan los ajustes personales realizados sobre el proyecto 
    - Se añadió padding interno cómodo (`window_padding_width 15`) para separar el texto de los bordes.
 11. **Avatar de Disco Personalizado P4**:
    - Disco 3D personalizado con el logo P4 en la página System de Quickshell.
-12. **Wallpapers incorporados**:
+12. **Lanzador de aplicaciones con Super**:
+   - `Super` (solita) abre el menú de aplicaciones (**Launcher / Rofi**) al presionarla y soltarla.
+13. **Wallpapers incorporados**:
    - Colección de fondos estáticos (`1.jpg` a `11.jpg`, `wallhaven-k8jvm7.jpg`) incluida directamente en la carpeta `wallpapers/`.
    - Soporte automático en `install.sh` tanto para rutas en español (`~/Imágenes/Wallpapers`) como en inglés (`~/Pictures/Wallpapers`).
 
@@ -74,7 +76,7 @@ A continuación se detallan los ajustes personales realizados sobre el proyecto 
 | Función / Elemento | Atajo | Acción / Descripción |
 |---|---|---|
 | **Terminal** | `Super + T` | Abre la terminal (**Kitty**) |
-| **Launcher** | `Super + D` | Lanzador de aplicaciones (**Rofi**) |
+| **Launcher** | `Super` | Lanzador de aplicaciones (**Rofi**) |
 | **File Manager** | `Super + E` | Gestor de archivos (**Thunar**) |
 | **Visual Studio Code** | `Super + C` | Editor de código (**VS Code**) |
 | **Close Active Window** | `Super + Q` | Cierra la ventana activa actual |

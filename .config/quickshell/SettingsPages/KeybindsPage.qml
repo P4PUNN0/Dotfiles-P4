@@ -51,7 +51,7 @@ Item {
     // Editable binds (saved to state/binds.lua as kb_<id>)
     readonly property var bindDefs: [
         { id: "terminal",      label: "TERMINAL",                    def: "T" },
-        { id: "launcher",      label: "LAUNCHER",                    def: "D" },
+        { id: "launcher",      label: "LAUNCHER",                    def: "SUPER",          noSuper: true },
         { id: "files",         label: "FILE MANAGER",                def: "E" },
         { id: "editor",        label: "VISUAL STUDIO CODE",          def: "C" },
         { id: "close",         label: "CLOSE ACTIVE WINDOW",         def: "Q" },

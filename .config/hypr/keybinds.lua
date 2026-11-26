@@ -5,7 +5,7 @@
 -- Defaults. Overrides come from state/binds.lua as kb_* (never reuse
 -- terminal/browser — those globals are the program names from hyprland.lua).
 local terminal_key      = "T"
-local launcher_key      = "D"
+local launcher_key      = "SUPER"
 local sidepanel_key     = "N"
 local files_key         = "E"
 local browser_key       = "W"
@@ -143,7 +143,12 @@ local home = os.getenv("HOME")
 local menu = "rofi -show drun"
 
 bind(mainMod .. " + " .. terminal_key,      hl.dsp.exec_cmd(terminal))
-bind(mainMod .. " + " .. launcher_key,      hl.dsp.exec_cmd("pgrep -x rofi >/dev/null && pkill -x rofi || " .. menu))
+if launcher_key == "SUPER" or launcher_key == "SUPER_L" then
+    bind("SUPER + SUPER_L", hl.dsp.exec_cmd("pgrep -x rofi >/dev/null && pkill -x rofi || " .. menu), { release = true })
+    bind("SUPER + SUPER_R", hl.dsp.exec_cmd("pgrep -x rofi >/dev/null && pkill -x rofi || " .. menu), { release = true })
+else
+    bind(mainMod .. " + " .. launcher_key,  hl.dsp.exec_cmd("pgrep -x rofi >/dev/null && pkill -x rofi || " .. menu))
+end
 bind(mainMod .. " + " .. sidepanel_key,         hl.dsp.exec_cmd("qs ipc call sidepanel toggle"))
 bind(mainMod .. " + " .. files_key,         hl.dsp.exec_cmd(fileManager))
 bind(mainMod .. " + " .. browser_key,       hl.dsp.exec_cmd("python3 " .. home .. "/.config/hypr/scripts/default-browser.py"))
