@@ -1,25 +1,29 @@
 #!/usr/bin/env bash
-# Pause mpvpaper (SIGSTOP) while any visible workspace has a fullscreen window.
+# Pause mpvpaper (SIGSTOP) while any visible workspace has open windows.
 sock="$XDG_RUNTIME_DIR/hypr/$HYPRLAND_INSTANCE_SIGNATURE/.socket2.sock"
 
 update() {
-    local fs
-    fs=$(jq -n \
-        --argjson mons "$(hyprctl -j monitors)" \
-        --argjson wss  "$(hyprctl -j workspaces)" '
+    local mons wss pause
+    mons=$(hyprctl -j monitors 2>/dev/null) || return
+    wss=$(hyprctl -j workspaces 2>/dev/null) || return
+    [[ -z "$mons" || -z "$wss" ]] && return
+
+    pause=$(jq -n \
+        --argjson mons "$mons" \
+        --argjson wss  "$wss" '
         [$mons[].activeWorkspace.id] as $act
-        | any($wss[]; .hasfullscreen and ([.id] | inside($act)))')
-    if [[ "$fs" == true ]]; then
-        pkill -STOP -x mpvpaper
+        | any($wss[]; (.windows > 0) and ([.id] | inside($act)))' 2>/dev/null)
+    if [[ "$pause" == true ]]; then
+        pkill -STOP -x mpvpaper 2>/dev/null
     else
-        pkill -CONT -x mpvpaper
+        pkill -CONT -x mpvpaper 2>/dev/null
     fi
 }
 
 update
 socat -U - "UNIX-CONNECT:$sock" | while read -r line; do
     case "${line%%>>*}" in
-        fullscreen|workspacev2|focusedmonv2|openwindow|closewindow|movewindow|monitoradded|monitorremoved)
+        openwindow|closewindow|movewindow|workspacev2|focusedmonv2|fullscreen|activewindow|activewindowv2|monitoradded|monitorremoved)
             update ;;
     esac
 done

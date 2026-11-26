@@ -6,26 +6,27 @@
 -- terminal/browser — those globals are the program names from hyprland.lua).
 local terminal_key      = "T"
 local launcher_key      = "D"
-local sidepanel_key     = "S"
+local sidepanel_key     = "N"
 local files_key         = "E"
-local browser_key       = "B"
+local browser_key       = "W"
+local editor_key        = "C"
 local close_key         = "Q"
 local lock_key          = "Tab"
 local power_key         = "GRAVE"
-local settings_key      = "I"
-local wallpapers_key    = "W"
+local settings_key      = "S"
+local wallpapers_key    = "P"
 local colorpicker_key   = "SHIFT + C"
 local fullscreen_key    = "F"
 local opacity_key       = "O"
 local theme_key         = "period"
-local todo_key          = "C"
+local todo_key          = "L"
 local bar_key           = "SHIFT + W"
 local clipboard_key     = "V"
 local layout_key        = "X"
 local float_key         = "Space"
 local record_key        = "R"
 local shot_key          = "Delete"
-local shot_area_key     = "SHIFT + Delete"
+local shot_area_key     = "SHIFT + S"
 local ocr_key           = "SHIFT + F12"
 local mic_key           = "M"
 
@@ -43,6 +44,7 @@ do
             if kb_sidepanel_key then sidepanel_key     = kb_sidepanel end
             if kb_files         then files_key         = kb_files end
             if kb_browser       then browser_key       = kb_browser end
+            if kb_editor        then editor_key        = kb_editor end
             if kb_close         then close_key         = kb_close end
             if kb_lock          then lock_key          = kb_lock end
             if kb_power         then power_key         = kb_power end
@@ -108,6 +110,7 @@ launcher_key      = normalize_key(launcher_key)
 sidepanel_key     = normalize_key(sidepanel_key)
 files_key         = normalize_key(files_key)
 browser_key       = normalize_key(browser_key)
+editor_key        = normalize_key(editor_key)
 close_key         = normalize_key(close_key)
 lock_key          = normalize_key(lock_key)
 power_key         = normalize_key(power_key)
@@ -144,6 +147,7 @@ bind(mainMod .. " + " .. launcher_key,      hl.dsp.exec_cmd("pgrep -x rofi >/dev
 bind(mainMod .. " + " .. sidepanel_key,         hl.dsp.exec_cmd("qs ipc call sidepanel toggle"))
 bind(mainMod .. " + " .. files_key,         hl.dsp.exec_cmd(fileManager))
 bind(mainMod .. " + " .. browser_key,       hl.dsp.exec_cmd("python3 " .. home .. "/.config/hypr/scripts/default-browser.py"))
+bind(mainMod .. " + " .. editor_key,        hl.dsp.exec_cmd(editor or "code"))
 bind(mainMod .. " + " .. close_key,         hl.dsp.window.close())
 bind(mainMod .. " + " .. lock_key,          hl.dsp.exec_cmd("hyprlock"))
 bind(mainMod .. " + " .. power_key,         hl.dsp.exec_cmd("qs ipc call powermenu toggle"))

@@ -8,6 +8,7 @@ terminal   = "kitty"
 menu       = "rofi -show drun"
 fileManager = "thunar"
 browser    = "brave"
+editor     = "code"
 
 -- Overrides written by Quickshell (Settings > Configs): mainMod, browser.
 -- Must load before keybinds.lua, which reads these globals when binding.
@@ -45,7 +46,7 @@ hl.env("MOZ_ENABLE_WAYLAND", "1")
 
 hl.config({
     input = {
-        kb_layout = "us",
+        kb_layout = "latam",
         follow_mouse = 1,
         sensitivity = 0.5,
         touchpad = {

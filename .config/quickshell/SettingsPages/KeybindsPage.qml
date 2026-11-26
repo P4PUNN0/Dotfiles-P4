@@ -53,6 +53,7 @@ Item {
         { id: "terminal",      label: "TERMINAL",                    def: "T" },
         { id: "launcher",      label: "LAUNCHER",                    def: "D" },
         { id: "files",         label: "FILE MANAGER",                def: "E" },
+        { id: "editor",        label: "VISUAL STUDIO CODE",          def: "C" },
         { id: "close",         label: "CLOSE ACTIVE WINDOW",         def: "Q" },
         { id: "settings",      label: "SETTINGS",                    def: "I" },
         { id: "browser",       label: "BROWSER",                     def: "B" },

@@ -336,10 +336,20 @@ DEFAULT_WALLPAPER_DEST="$WALLPAPER_DIR/wallhaven-k8jvm7.jpg"
 
 mkdir -p "$HOME/Pictures" "$WALLPAPER_DIR"
 
-# Copy (not symlink) so the picker can rename/delete it freely.
+# Copy all bundled wallpapers
+if [[ -d "$REPO_DIR/wallpapers" ]]; then
+    cp -n "$REPO_DIR/wallpapers"/* "$WALLPAPER_DIR/" 2>/dev/null || cp "$REPO_DIR/wallpapers"/* "$WALLPAPER_DIR/" 2>/dev/null || true
+fi
+
+# Copy (not symlink) default so the picker can rename/delete it freely.
 # Never overwrite: if the user already has this file, leave it alone.
 if [[ -f "$DEFAULT_WALLPAPER_SRC" && ! -e "$DEFAULT_WALLPAPER_DEST" ]]; then
     cp "$DEFAULT_WALLPAPER_SRC" "$DEFAULT_WALLPAPER_DEST"
+fi
+
+# Also ensure Spanish locale directory links to the wallpapers
+if [[ -d "$HOME/Imágenes" && ! -e "$HOME/Imágenes/Wallpapers" ]]; then
+    ln -s "$WALLPAPER_DIR" "$HOME/Imágenes/Wallpapers" 2>/dev/null || true
 fi
 
 success "Pictures and Wallpapers directories ready."
