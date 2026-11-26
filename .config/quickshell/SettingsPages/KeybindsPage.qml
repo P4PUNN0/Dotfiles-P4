@@ -56,7 +56,7 @@ Item {
         { id: "editor",        label: "VISUAL STUDIO CODE",          def: "C" },
         { id: "close",         label: "CLOSE ACTIVE WINDOW",         def: "Q" },
         { id: "settings",      label: "SETTINGS",                    def: "S" },
-        { id: "browser",       label: "BROWSER",                     def: "B" },
+        { id: "browser",       label: "BROWSER",                     def: "W" },
         { id: "sidepanel",     label: "SIDE PANEL",                  def: "N" },
         { id: "fullscreen",    label: "FULLSCREEN",                  def: "F" },
         { id: "float",         label: "FLOATING WINDOW",             def: "Space" },
@@ -64,9 +64,9 @@ Item {
         { id: "power",         label: "POWER MENU",                  def: "GRAVE" },
         { id: "opacity",       label: "OPACITY",                     def: "O" },
         { id: "clipboard",     label: "CLIPBOARD",                   def: "V" },
-        { id: "todo",          label: "NOTES & REMINDERS",           def: "L" },
+        { id: "todo",          label: "NOTES & REMINDERS",           def: "C" },
         { id: "colorpicker",   label: "COLOR PICKER",                def: "SHIFT + C" },
-        { id: "wallpapers",    label: "WALLPAPERS PICKER",           def: "W" },
+        { id: "wallpapers",    label: "WALLPAPERS PICKER",           def: "P" },
         { id: "record",        label: "TOGGLE SCREEN RECORDING",     def: "R" },
         { id: "theme",         label: "TOGGLE DARK/LIGHT MODE",      def: "period" },
         { id: "bar",           label: "TOGGLE BAR",                  def: "SHIFT + W" },
@@ -74,7 +74,7 @@ Item {
         { id: "mic",           label: "TOGGLE MIC MUTE",             def: "M" },
         // noSuper: bound as-is in keybinds.lua, SUPER is not prepended
         { id: "shot",          label: "SCREENSHOT (FULL)",           def: "Delete",         noSuper: true },
-        { id: "shot_area",     label: "SCREENSHOT (AREA)",           def: "SHIFT + Delete", noSuper: true },
+        { id: "shot_area",     label: "SCREENSHOT (AREA)",           def: "SHIFT + S" },
         { id: "ocr",           label: "TEXT EXTRACTOR (OCR)",        def: "SHIFT + F12",    noSuper: true }
     ]
 

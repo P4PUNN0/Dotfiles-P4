@@ -26,7 +26,7 @@ local layout_key        = "X"
 local float_key         = "Space"
 local record_key        = "R"
 local shot_key          = "Delete"
-local shot_area_key     = "SHIFT + S"
+local shot_area_key     = "SUPER + SHIFT + S"
 local ocr_key           = "SHIFT + F12"
 local mic_key           = "M"
 
