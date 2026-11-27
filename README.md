@@ -13,7 +13,6 @@
   <img src="https://img.shields.io/badge/LICENSE-MIT-green?style=flat&labelColor=101418" height="20" alt="License">
 </p>
 
-> [!NOTE]
 > 📌 **Aviso y Créditos**: Esta configuración está basada en los increíbles dotfiles de **[43PR/dotfiles](https://github.com/43PR/dotfiles)**. He realizado adaptaciones y ajustes personales a mi flujo de trabajo diario (atajos de teclado, distribución de teclado, editor predeterminado, opacidades, scripts de fondos animados, arte ASCII en Fastfetch y colección de wallpapers). ¡Todo el mérito de la base original pertenece a [43PR](https://github.com/43PR)!
 
 <b><a href="#-modificaciones-respecto-a-la-base-original">Modificaciones</a> · <a href="#-atajos-de-teclado-keybinds">Atajos</a> · <a href="#-wallpapers">Wallpapers</a> · <a href="#-instalación">Instalación</a> · <a href="#-estructura">Estructura</a></b>
