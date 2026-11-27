@@ -46,12 +46,12 @@ Item {
 
     Process {
         id: dfProc
-        command: ["df", "-h", "/"]
+        command: ["sh", "-c", "df -h -l --total -x tmpfs -x devtmpfs -x efivarfs -x overlay -x squashfs 2>/dev/null | tail -1"]
         stdout: StdioCollector {
             onStreamFinished: {
-                const lines = text.trim().split("\n");
-                if (lines.length > 1) {
-                    const parts = lines[1].replace(/\s+/g, " ").split(" ");
+                const line = text.trim();
+                if (line.length > 0) {
+                    const parts = line.replace(/\s+/g, " ").split(" ");
                     if (parts.length >= 5) {
                         root.diskTotalStr = parts[1];
                         root.diskUsedStr = parts[2];

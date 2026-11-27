@@ -78,20 +78,25 @@ Item {
             if (!obj.blockdevices) return disks
             for (var i = 0; i < obj.blockdevices.length; ++i) {
                 var d = obj.blockdevices[i]
-                if (d.type === "disk" && d.name === "sda")
+                if (d.type === "disk" && d.name && d.name.indexOf("zram") !== 0 && d.name.indexOf("loop") !== 0)
                     disks.push({ name: d.name || "", model: d.model || "", size: parseInt(d.size) || 0, type: d.type || "", tran: d.tran || "" })
             }
         } catch (e) { console.log("lsblk JSON error:", e) }
         return disks
     }
 
-    function findSdaUsage() {
+    function findDriveUsage(driveName) {
         var used = 0
+        var prefix = "/dev/" + driveName
         for (var i = 0; i < filesystems.length; ++i) {
             var fs = filesystems[i]
-            if (fs.filesystem.indexOf("/dev/sda") === 0) used += fs.used
+            if (fs.filesystem && fs.filesystem.indexOf(prefix) === 0) used += fs.used
         }
         return used > 0 ? {used: used} : null
+    }
+
+    function findSdaUsage() {
+        return findDriveUsage("sda")
     }
 
     // k is the cleanup key, used to measure what the command changed
@@ -306,8 +311,9 @@ Item {
                         model: page.drives
                         delegate: Item {
                             required property var modelData
-                            property bool hasUsage: page.sdaUsageData !== null && modelData.size > 0
-                            property real usedPct: hasUsage ? (page.sdaUsageData.used / modelData.size) * 100 : 0
+                            readonly property var usageData: page.findDriveUsage(modelData.name)
+                            property bool hasUsage: usageData !== null && modelData.size > 0
+                            property real usedPct: hasUsage ? (usageData.used / modelData.size) * 100 : 0
                             width: list.width; height: 64
 
                             Column {
@@ -342,12 +348,12 @@ Item {
                                 Row {
                                     width: parent.width; height: 13; spacing: 14
                                     Text {
-                                        text: page.sdaUsageData ? page.formatBytes(page.sdaUsageData.used) + " USED" : "-- USED"
+                                        text: usageData ? page.formatBytes(usageData.used) + " USED" : "-- USED"
                                         color: Theme.textDim; font.family: Theme.fontFamily; font.pixelSize: Theme.textSizeBody
                                     }
                                     Text {
-                                        text: page.sdaUsageData && modelData.size > page.sdaUsageData.used
-                                            ? page.formatBytes(modelData.size - page.sdaUsageData.used) + " FREE" : "-- FREE"
+                                        text: usageData && modelData.size > usageData.used
+                                            ? page.formatBytes(modelData.size - usageData.used) + " FREE" : "-- FREE"
                                         color: Theme.textDim; font.family: Theme.fontFamily; font.pixelSize: Theme.textSizeBody
                                     }
                                     Text {
