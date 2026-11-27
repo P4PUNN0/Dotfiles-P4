@@ -26,7 +26,7 @@ local layout_key        = "X"
 local float_key         = "Space"
 local record_key        = "R"
 local shot_key          = "Delete"
-local shot_area_key     = "SUPER + SHIFT + S"
+local shot_area_key     = "SHIFT + S"
 local ocr_key           = "SHIFT + F12"
 local mic_key           = "M"
 
@@ -152,11 +152,13 @@ else
     bind(mainMod .. " + " .. launcher_key,  hl.dsp.exec_cmd("pgrep -x rofi >/dev/null && pkill -x rofi || " .. menu))
 end
 bind(mainMod .. " + " .. sidepanel_key,         hl.dsp.exec_cmd("qs ipc call sidepanel toggle"))
+bind(mainMod .. " + D",                     hl.dsp.exec_cmd("qs ipc call notch toggle"))
 bind(mainMod .. " + " .. files_key,         hl.dsp.exec_cmd(fileManager))
 bind(mainMod .. " + " .. browser_key,       hl.dsp.exec_cmd("python3 " .. home .. "/.config/hypr/scripts/default-browser.py"))
 bind(mainMod .. " + " .. editor_key,        hl.dsp.exec_cmd(editor or "code"))
 bind(mainMod .. " + " .. close_key,         hl.dsp.window.close())
 bind(mainMod .. " + " .. lock_key,          hl.dsp.exec_cmd("hyprlock"))
+bind(mainMod .. " + ISO_Left_Tab",          hl.dsp.exec_cmd("hyprlock"))
 bind(mainMod .. " + " .. power_key,         hl.dsp.exec_cmd("qs ipc call powermenu toggle"))
 bind(mainMod .. " + " .. settings_key,      hl.dsp.exec_cmd("qs ipc call settings toggle"))
 bind(mainMod .. " + " .. wallpapers_key,    hl.dsp.exec_cmd("qs -n -p ~/.config/quickshell/hyprquickpaper"))
@@ -187,9 +189,10 @@ grim "$file" || exit 1
 if [ "${shot_full_clip:-1}" = 1 ]; then wl-copy --type image/png < "$file"; fi
 qs ipc call screenshot notify "$file"
 ']==]))
-bind(shot_area_key, hl.dsp.exec_cmd(home .. "/.config/hypr/scripts/screenshot-area.sh"))
+bind(mainMod .. " + " .. shot_area_key, hl.dsp.exec_cmd(home .. "/.config/hypr/scripts/screenshot-area.sh"))
+bind(mainMod .. " + SHIFT + S",         hl.dsp.exec_cmd(home .. "/.config/hypr/scripts/screenshot-area.sh"))
 
-bind(ocr_key, hl.dsp.exec_cmd(home .. "/.config/hypr/scripts/ocr-area.sh"))
+bind(mainMod .. " + " .. ocr_key,       hl.dsp.exec_cmd(home .. "/.config/hypr/scripts/ocr-area.sh"))
 
 -- Custom binds created in Settings > Keybinds (state/custom_binds.lua).
 -- Keys are stored as full chords (SUPER only if it was held), so mainMod is not prepended.

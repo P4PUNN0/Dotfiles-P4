@@ -1,6 +1,7 @@
 //@ pragma UseQApplication
 import Quickshell
 import "colorpicker"
+import "notch"
 
 ShellRoot {
     VolumeOsd {}
@@ -14,4 +15,5 @@ ShellRoot {
     Notifications {}
     ColorPicker {}
     DisplayGuard {}
+    NotchDashboard {}
 }
